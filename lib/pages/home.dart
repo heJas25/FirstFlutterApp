@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+
+class MyHome extends StatelessWidget {
+  const MyHome({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +20,24 @@ class MyWidget extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: Container(
+          alignment: Alignment.center,
           margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Color.fromARGB(255, 241, 169, 254),
+            color: Color.fromARGB(255, 245, 215, 250),
           ),
-          child: SvgPicture.asset(
-            'assets/icons/Arrows - Left 2.svg',
-            height: 20,
-            width: 20,
-          ),
+          child: const Icon(Icons.arrow_back_ios_rounded ,weight: 17),
         ),
+        actions: 
+        [ Container(
+          alignment: Alignment.center,
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Color.fromARGB(255, 245, 215, 250),
+          ),
+          child: const Icon(Icons.plus_one_rounded ,weight: 17),
+        ),],
       ),
     );
   }
