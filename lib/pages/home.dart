@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
@@ -17,7 +18,19 @@ class MyWidget extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
-        elevation: 0.0 ,
+        elevation: 0.0,
+        leading: Container(
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Color.fromARGB(255, 241, 169, 254),
+          ),
+          child: SvgPicture.asset(
+            'assets/icons/Arrows - Left 2.svg',
+            height: 20,
+            width: 20,
+          ),
+        ),
       ),
     );
   }
