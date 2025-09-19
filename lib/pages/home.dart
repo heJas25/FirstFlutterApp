@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mon_premier_projet/models/category.dart';
+import 'package:mon_premier_projet/models/diet.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
@@ -10,20 +11,32 @@ class MyHome extends StatefulWidget {
 
 class _MyHomeState extends State<MyHome> {
   List<CategoryModel> categories = [];
+  List<DietModel> diets = [];
 
   void _getCategories() {
     categories = CategoryModel.getCategories();
+  }
+
+  void _getDietList() {
+    diets = DietModel.getDietList();
+  }
+
+  void _getInfo() {
+    categories = CategoryModel.getCategories();
+    diets = DietModel.getDietList();
   }
 
   @override
   void initState() {
     super.initState();
     _getCategories();
+    _getDietList();
   }
 
   @override
   Widget build(BuildContext context) {
-    _getCategories(); //call it first so the list isfilled then the widget are display
+    _getInfo(); //call it first so the list isfilled then the widget are display
+
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
@@ -31,13 +44,18 @@ class _MyHomeState extends State<MyHome> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _searchField(),
+          SizedBox(
+            height: 40,
+          ), //creat space between the search field and the list
+          _list(),
           SizedBox(height: 40),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Text(
-                  'Category',
+                  'Recommendation',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
@@ -47,34 +65,44 @@ class _MyHomeState extends State<MyHome> {
               ),
               SizedBox(height: 15),
               Container(
-                height: 150,
-            
-            
-                padding: EdgeInsets.only(left: 20,right: 20 ),
+                height: 240,
                 child: ListView.separated(
+                  separatorBuilder: (context, index) => SizedBox(width: 20),
+                  itemCount: diets.length,
                   scrollDirection: Axis.horizontal,
-                
-                  itemCount: categories.length,
-                  separatorBuilder: (context, index) => SizedBox(width: 15),
+                  padding: EdgeInsets.only(left: 20, right: 20),
                   itemBuilder: (context, index) {
                     return Container(
-                      width: 100,
+                      width: 180,
                       decoration: BoxDecoration(
-                        color: categories[index].boxColor.withOpacity(0.3),
+                        color:Color.fromARGB(132, 249, 158, 239),
                         borderRadius: BorderRadius.circular(15),
-                      ),
+                      ), 
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Image.asset(categories[index].iconPath),
+                          Image.asset(diets[index].image),
                           Text(
-                            categories[index].name,
+                            diets[index].name,
                             style: TextStyle(
-                              color: Colors.black,
+                              color: const Color.fromARGB(220, 0, 0, 0),
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
+                          Text(diets[index].description,style: 
+                          TextStyle(color: const Color.fromARGB(232, 141, 141, 141),fontSize: 10),),
+                          Container(
+                            height: 45,
+                            width: 130,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 244, 162, 246),
+                                  Color.fromARGB(231, 251, 123, 253),
+                              ]),
+                              borderRadius: BorderRadius.circular(15),),
+                          )
                         ],
                       ),
                     );
@@ -85,6 +113,59 @@ class _MyHomeState extends State<MyHome> {
           ),
         ],
       ),
+    );
+  }
+
+  Column _list() {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Text(
+            'Category',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        SizedBox(height: 15),
+        Container(
+          height: 150,
+
+          padding: EdgeInsets.only(left: 20, right: 20),
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+
+            itemCount: categories.length,
+            separatorBuilder: (context, index) => SizedBox(width: 15),
+            itemBuilder: (context, index) {
+              return Container(
+                width: 100,
+                decoration: BoxDecoration(
+                  color: categories[index].boxColor.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(categories[index].iconPath),
+                    Text(
+                      categories[index].name,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 
