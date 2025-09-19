@@ -65,7 +65,7 @@ class _MyHomeState extends State<MyHome> {
               ),
               SizedBox(height: 15),
               Container(
-                height: 240,
+                height: 220,
                 child: ListView.separated(
                   separatorBuilder: (context, index) => SizedBox(width: 20),
                   itemCount: diets.length,
@@ -75,23 +75,23 @@ class _MyHomeState extends State<MyHome> {
                     return Container(
                       width: 180,
                       decoration: BoxDecoration(
-                        color:Color.fromARGB(132, 249, 158, 239),
+                        color:Color.fromARGB(91, 247, 170, 238),
                         borderRadius: BorderRadius.circular(15),
                       ), 
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Image.asset(diets[index].image),
+                          Image.asset(diets[index].image , height: 60,width:60 ,),
                           Text(
                             diets[index].name,
                             style: TextStyle(
                               color: const Color.fromARGB(220, 0, 0, 0),
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                           Text(diets[index].description,style: 
-                          TextStyle(color: const Color.fromARGB(232, 141, 141, 141),fontSize: 10),),
+                          TextStyle(color: const Color.fromARGB(255, 129, 127, 127),fontSize: 15),),
                           Container(
                             height: 45,
                             width: 130,
@@ -99,9 +99,19 @@ class _MyHomeState extends State<MyHome> {
                               gradient: LinearGradient(
                                 colors: [
                                   Color.fromARGB(255, 244, 162, 246),
-                                  Color.fromARGB(231, 251, 123, 253),
+                                  Color.fromARGB(231, 214, 24, 235),
                               ]),
                               borderRadius: BorderRadius.circular(15),),
+                            child: Center(
+                              child: Text(
+                                'View Now',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
                           )
                         ],
                       ),
