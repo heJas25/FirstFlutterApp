@@ -10,4 +10,37 @@ class CategoryModel {
     required this.iconPath,
     required this.boxColor,
   });
+  List<CategoryModel> getCategories() {
+    List<CategoryModel> categories = [];
+
+    categories.add(
+      CategoryModel(
+        name: 'Ice cream',
+        iconPath: 'assets/icons/icecream.png',
+        boxColor: Color(0xFFFFC1CC),
+      ),
+    );
+    categories.add(
+      CategoryModel(
+        name: 'Pancakes',
+        iconPath: 'asets/images/pancack.png',
+        boxColor: Color(0xFFE0BBE4),
+      ),
+    );
+    categories.add(
+      CategoryModel(
+        name: 'Cake',
+        iconPath: 'assets/icons/cake.png',
+        boxColor: Color.fromARGB(255, 145, 235, 202),
+      ),
+    );
+    categories.add(
+      CategoryModel(
+        name: 'Pudding',
+        iconPath: 'assets/icons/icons8-pudding-46.png',
+        boxColor: Color(0xFFFFF9B0),
+      ),
+    );
+    return categories;
+  }
 }
