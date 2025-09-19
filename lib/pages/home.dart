@@ -48,7 +48,8 @@ class _MyHomeState extends State<MyHome> {
               SizedBox(height: 15),
               Container(
                 height: 150,
-                color: Color.fromARGB(255, 212, 157, 241),
+            
+            
                 padding: EdgeInsets.only(left: 20,right: 20 ),
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
@@ -61,6 +62,20 @@ class _MyHomeState extends State<MyHome> {
                       decoration: BoxDecoration(
                         color: categories[index].boxColor.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(categories[index].iconPath),
+                          Text(
+                            categories[index].name,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   },

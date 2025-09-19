@@ -16,21 +16,21 @@ class CategoryModel {
     categories.add(
       CategoryModel(
         name: 'Ice cream',
-        iconPath: 'assets/icons/icecream.png',
+        iconPath: 'assets/icons/icons8-dessert-46.png',
         boxColor: Color(0xFFFFC1CC),
       ),
     );
     categories.add(
       CategoryModel(
         name: 'Pancakes',
-        iconPath: 'asets/images/pancack.png',
+        iconPath: 'asets/images/icons8-pancakes-46.png',
         boxColor: Color(0xFFE0BBE4),
       ),
     );
     categories.add(
       CategoryModel(
         name: 'Cake',
-        iconPath: 'assets/icons/cake.png',
+        iconPath: 'assets/icons/icons8-cake-46.png',
         boxColor: Color.fromARGB(255, 145, 235, 202),
       ),
     );
@@ -48,13 +48,7 @@ class CategoryModel {
         boxColor: Color.fromARGB(255, 245, 168, 182),
       ),
     );
-    categories.add(
-      CategoryModel(
-        name: 'Pancakes',
-        iconPath: 'asets/images/pancack.png',
-        boxColor: Color(0xFFE0BBE4),
-      ),
-    );
+    
     return categories;
   }
 }
