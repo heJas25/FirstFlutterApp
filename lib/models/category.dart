@@ -10,7 +10,7 @@ class CategoryModel {
     required this.iconPath,
     required this.boxColor,
   });
-  List<CategoryModel> getCategories() {
+  static List<CategoryModel> getCategories() {
     List<CategoryModel> categories = [];
 
     categories.add(
@@ -39,6 +39,20 @@ class CategoryModel {
         name: 'Pudding',
         iconPath: 'assets/icons/icons8-pudding-46.png',
         boxColor: Color(0xFFFFF9B0),
+      ),
+    );
+    categories.add(
+      CategoryModel(
+        name: 'Smoothie',
+        iconPath: 'assets/icons/icons8-smoothie-46.png',
+        boxColor: Color.fromARGB(255, 245, 168, 182),
+      ),
+    );
+    categories.add(
+      CategoryModel(
+        name: 'Pancakes',
+        iconPath: 'asets/images/pancack.png',
+        boxColor: Color(0xFFE0BBE4),
       ),
     );
     return categories;

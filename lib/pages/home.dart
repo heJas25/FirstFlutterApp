@@ -1,10 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:mon_premier_projet/models/category.dart';
 
-class MyHome extends StatelessWidget {
+class MyHome extends StatefulWidget {
   const MyHome({super.key});
 
   @override
+  State<MyHome> createState() => _MyHomeState();
+}
+
+class _MyHomeState extends State<MyHome> {
+  List<CategoryModel> categories = [];
+
+  void _getCategories() {
+    categories = CategoryModel.getCategories();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getCategories();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    _getCategories(); //call it first so the list isfilled then the widget are display
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
@@ -29,11 +48,21 @@ class MyHome extends StatelessWidget {
               SizedBox(height: 15),
               Container(
                 height: 150,
-                color: Color.fromARGB(255, 201, 116, 247),
-                child: ListView.builder(
+                color: Color.fromARGB(255, 212, 157, 241),
+                padding: EdgeInsets.only(left: 20,right: 20 ),
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                
+                  itemCount: categories.length,
+                  separatorBuilder: (context, index) => SizedBox(width: 15),
                   itemBuilder: (context, index) {
-                    
-                    return Container();
+                    return Container(
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: categories[index].boxColor.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    );
                   },
                 ),
               ),
